@@ -1,5 +1,6 @@
 import home from "../page_objects/home"
 import inputForm from "../page_objects/inputForm"
+import lists from "../page_objects/lists"
 import alerts from "../page_objects/alerts"
 import modals from "../page_objects/modals"
 
@@ -113,6 +114,14 @@ describe('Quidax Assessment', () => {
     //Verify Auto Success Message is displayed
     alerts.elements.normalSuccessMsg().contains("I'm a normal success message. To close use the appropriate button.")
     
+  })
+
+  it('Should Select Single Item from List', () => {
+    home.openListPage()
+    lists.elements.selectListDemo().select('Sunday')
+
+    //Verify Selected Item is displayed
+    lists.elements.selectSingleDisplay().should('be.visible')
   })
 
 })
